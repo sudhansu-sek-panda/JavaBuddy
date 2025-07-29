@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   GraduationCap,
@@ -17,15 +17,39 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < lastScrollY) {
+      setShowNavbar(true); // scrolling up
+    } else {
+      setShowNavbar(false); // scrolling down
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   return (
-    <div className="w-full"
-    style={{
-    background: "linear-gradient(135deg, #8B0000, #C62828, #283593, #1A237E)",
-  }}>
-      <div className="h-[60px] flex justify-between items-center px-6 md:px-10">
+    <div className="w-full">
+      <nav
+        className={`h-[60px] px-6 md:px-10 flex justify-between items-center fixed top-0 left-0 right-0 z-50 transition-transform duration-700 ${
+          showNavbar ? "translate-y-0" : "-translate-y-full"
+        } shadow`}
+        style={{
+          background: "linear-gradient(90deg, #ff6b6b, #fca311, #1982c4)",
+        }}
+      >
         {/* Logo */}
         <div className="text-3xl font-extrabold tracking-wide flex items-center gap-2 text-white">
           {/* <GraduationCap className="w-7 h-7 text-white" /> */}
@@ -93,7 +117,7 @@ const Navbar = () => {
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-      </div>
+      </nav>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
@@ -141,4 +165,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+  export default Navbar;
