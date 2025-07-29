@@ -21,11 +21,14 @@ const Navbar = () => {
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   return (
-    <div className="w-full bg-gradient-to-r from-emerald-500 to-indigo-700 shadow-lg">
+    <div className="w-full"
+    style={{
+    background: "linear-gradient(135deg, #8B0000, #C62828, #283593, #1A237E)",
+  }}>
       <div className="h-[60px] flex justify-between items-center px-6 md:px-10">
         {/* Logo */}
         <div className="text-3xl font-extrabold tracking-wide flex items-center gap-2 text-white">
-          <GraduationCap className="w-7 h-7 text-white" />
+          {/* <GraduationCap className="w-7 h-7 text-white" /> */}
           <NavLink
             to="/"
             className="hover:scale-105 transition-transform duration-300"

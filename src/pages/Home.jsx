@@ -82,7 +82,7 @@ const Home = () => {
 
             <div className="flex gap-4 animate-fade-in-up">
               <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/50 animate-bounce">
-              <Link to="/dashboard/introduction">  Get Started</Link>
+              <Link to="/user/signin">  Get Started</Link>
               </button>
               
             </div>
