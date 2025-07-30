@@ -1,18 +1,16 @@
-
-
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { Eye, EyeOff, ImagePlus } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Eye, EyeOff, ImagePlus } from "lucide-react";
+import { motion } from "framer-motion";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    nickname: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    nickname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [profileImage, setProfileImage] = useState(null);
@@ -46,36 +44,36 @@ const SignUp = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match.');
+      toast.error("Passwords do not match.");
       return;
     }
 
     try {
       const userData = { ...formData, profileImage: previewImage };
-      localStorage.setItem('logindetails', JSON.stringify(userData));
-      toast.success('SignUp successful!');
-      navigate('/signin');
+      localStorage.setItem("logindetails", JSON.stringify(userData));
+      toast.success("SignUp successful!");
+      navigate("/signin");
     } catch (error) {
       console.error(error);
-      toast.error('Something went wrong.');
+      toast.error("Something went wrong.");
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row font-sans bg-gradient-to-tr from-blue-50 to-blue-100">
-
+    <div className="min-h-screen flex flex-col lg:flex-row font-sans">
       {/* Left Panel */}
-      <div className="lg:w-1/2 flex items-center justify-center bg-blue-700 text-white py-20 px-10 text-center">
+      <div className="lg:w-1/2 flex items-center justify-center bg-gradient-to-br from-black via-[#0f0f3f] to-black text-white py-20 px-10 text-center border-r border-cyan-500/20">
         <div>
-          <h2 className="text-5xl font-extrabold mb-4 animate-pulse">
-            Welcome Back{formData.nickname ? `, ${formData.nickname}!` : ' User!'}
+          <h2 className="text-5xl font-extrabold mb-4 animate-pulse text-cyan-400">
+            Welcome Back
+            {formData.nickname ? `, ${formData.nickname}!` : " User!"}
           </h2>
-          <p className="text-lg mb-6">
+          <p className="text-lg mb-6 text-gray-400">
             To keep connected with us, please login with your personal info.
           </p>
           <Link
             to="/user/signin"
-            className="inline-block px-8 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-blue-700 transition-all duration-300"
+            className="inline-block px-8 py-3 border-2 border-cyan-400 rounded-full font-semibold hover:bg-cyan-400 hover:text-black transition-all duration-300"
           >
             SIGN IN
           </Link>
@@ -83,18 +81,18 @@ const SignUp = () => {
       </div>
 
       {/* Right Panel */}
-      <div className="lg:w-1/2 flex items-center justify-center py-16 px-6">
+      <div className="lg:w-1/2 flex items-center justify-center py-16 px-6 bg-gradient-to-tr from-[#0f0f3f] via-black to-[#0b0b2d] text-white">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="w-full max-w-md bg-white rounded-xl shadow-xl p-8"
+          className="w-full max-w-md bg-[#0b0b1e] rounded-xl shadow-lg p-8 border border-cyan-500/30"
         >
           {/* Upload Image */}
           <div className="flex flex-col items-center mb-4">
             <label
               htmlFor="profileImage"
-              className="cursor-pointer text-blue-700 hover:text-blue-900 flex items-center gap-2 animate-bounce hover:animate-none transition-all duration-500"
+              className="cursor-pointer text-cyan-400 hover:text-cyan-200 flex items-center gap-2 animate-bounce hover:animate-none transition-all duration-500"
               title="Upload Profile Image"
             >
               <ImagePlus size={24} />
@@ -110,56 +108,54 @@ const SignUp = () => {
               <img
                 src={previewImage}
                 alt="Preview"
-                className="mt-3 w-20 h-20 object-cover rounded-full shadow"
+                className="mt-3 w-20 h-20 object-cover rounded-full shadow border border-cyan-500/30"
               />
             )}
           </div>
 
-          <h2 className="text-3xl font-bold text-center text-blue-800 mb-2">Create Account</h2>
-          <p className="text-center text-gray-500 mb-6">Or use your email for registration</p>
+          <h2 className="text-3xl font-bold text-center text-cyan-400 mb-2">
+            Create Account
+          </h2>
+          <p className="text-center text-gray-400 mb-6">
+            Or use your email for registration
+          </p>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
-            {/* Username */}
+            {/* Fields */}
             <input
               type="text"
               name="username"
               value={formData.username}
               onChange={handleChange}
               placeholder="Username"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 bg-black/20 text-white border border-cyan-500 rounded-lg focus:ring-2 focus:ring-cyan-400 outline-none"
               required
             />
-
-            {/* Nickname */}
             <input
               type="text"
               name="nickname"
               value={formData.nickname}
               onChange={handleChange}
               placeholder="Nickname"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 bg-black/20 text-white border border-cyan-500 rounded-lg focus:ring-2 focus:ring-cyan-400 outline-none"
             />
-
-            {/* Email */}
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 bg-black/20 text-white border border-cyan-500 rounded-lg focus:ring-2 focus:ring-cyan-400 outline-none"
               required
             />
-
-            {/* Password */}
             <div className="relative">
               <input
-                type={showPassword.password ? 'text' : 'password'}
+                type={showPassword.password ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="Password"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-3 bg-black/20 text-white border border-cyan-500 rounded-lg focus:ring-2 focus:ring-cyan-400 outline-none"
                 required
               />
               <span
@@ -169,21 +165,23 @@ const SignUp = () => {
                     password: !prev.password,
                   }))
                 }
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600 hover:text-blue-500"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer hover:text-cyan-300 transition"
               >
-                {showPassword.password ? <EyeOff size={20} /> : <Eye size={20} />}
+                {showPassword.password ? (
+                  <EyeOff size={20} />
+                ) : (
+                  <Eye size={20} />
+                )}
               </span>
             </div>
-
-            {/* Confirm Password */}
             <div className="relative">
               <input
-                type={showPassword.confirmPassword ? 'text' : 'password'}
+                type={showPassword.confirmPassword ? "text" : "password"}
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 placeholder="Confirm Password"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-3 bg-black/20 text-white border border-cyan-500 rounded-lg focus:ring-2 focus:ring-cyan-400 outline-none"
                 required
               />
               <span
@@ -193,16 +191,18 @@ const SignUp = () => {
                     confirmPassword: !prev.confirmPassword,
                   }))
                 }
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600 hover:text-blue-500"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer hover:text-cyan-300 transition"
               >
-                {showPassword.confirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                {showPassword.confirmPassword ? (
+                  <EyeOff size={20} />
+                ) : (
+                  <Eye size={20} />
+                )}
               </span>
             </div>
-
-            {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-3 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-600 transition duration-300 shadow-md"
+              className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-3 rounded-full font-semibold hover:from-cyan-600 hover:to-purple-700 transition duration-300 shadow-md shadow-cyan-400/30"
             >
               SIGN UP
             </button>
