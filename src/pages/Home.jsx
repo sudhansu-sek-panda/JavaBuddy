@@ -80,11 +80,13 @@ const Home = () => {
           </div>
 
           <div
-            className={`relative w-80 h-80 mt-10 md:mt-0 transition-all duration-1000 ${
-              isVisible
-                ? "translate-x-0 opacity-100"
-                : "translate-x-full opacity-0"
-            }`}
+            className={`relative aspect-square w-80 mt-10 md:mt-0 transition-transform duration-1000 ease-in-out
+  ${
+    isVisible
+      ? "opacity-100 translate-x-0"
+      : "opacity-0 -translate-x-96 md:-translate-x-full"
+  }
+`}
           >
             <div className="relative w-full h-[300px] flex items-center justify-center overflow-visible">
               <div className="relative z-10">
