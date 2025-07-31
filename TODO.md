@@ -9,3 +9,4 @@
 # fix navbar in dashboard (jyoti)
 # arrow to close sidebar in dashboard (aswini)
 # fix tablet responsive (jyoti)
+# react and tailwind link under icon
