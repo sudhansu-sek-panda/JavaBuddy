@@ -8,11 +8,13 @@ import ScrollPage from "./components/scrollButton/ScrollPage";
 
 const Layout = () => {
   return (
-    <div className="min-h-screen w-full bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
+    <div  className="min-h-screen w-full bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <Navbar/>
       <Outlet />
       <ToastContainer/>
-      {/* <ScrollPage/> */}
+      <ScrollPage/>
+    
+
     </div>
   );
 };

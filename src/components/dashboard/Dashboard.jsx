@@ -244,8 +244,8 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      <main className="flex-1 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 p-8 overflow-y-auto scrollbar-hide">
-        <div className="max-w-6xl mx-auto">
+      <main id="main-scroll" className="flex-1 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 p-8 overflow-y-auto scrollbar-hide">
+        <div className="max-w-6xl mx-auto ">
           <Outlet />
         </div>
         <ScrollPage />
