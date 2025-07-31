@@ -86,7 +86,7 @@ const AdminSignUp = () => {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row font-sans bg-gradient-to-tr from-[#020420] via-[#0c1f36] to-[#040612]">
       {/* Left Panel */}
-      <div className="lg:w-1/2 flex items-center justify-center bg-gradient-to-b from-blue-700 to-purple-700 text-white py-20 px-10 text-center">
+      <div className="lg:w-1/2 flex items-center justify-center bg-gradient-to-tr from-[#0f0f3f] via-black to-[#0b0b2d] py-20 px-10 text-center">
         <div>
           <h2 className="text-5xl font-extrabold mb-4 animate-pulse">
             Welcome Admin{formData.role ? `, ${formData.role}!` : "!"}
@@ -106,9 +106,9 @@ const AdminSignUp = () => {
       {/* Right Panel */}
       <div className="lg:w-1/2 flex items-center justify-center py-16 px-6">
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, x: -100 }} // Slide from left
+          animate={{ opacity: 1, x: 0 }} // To center
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full max-w-md bg-[#0b0b1e] rounded-xl shadow-lg p-8 border border-cyan-500/30"
         >
           {/* Upload Image */}

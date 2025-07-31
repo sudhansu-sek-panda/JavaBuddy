@@ -62,9 +62,9 @@ const SignIn = () => {
       {/* Right Panel */}
       <div className="lg:w-1/2 flex items-center justify-center py-16 px-6">
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, x: -100 }} // Slide from left
+          animate={{ opacity: 1, x: 0 }} // To center
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full max-w-md bg-[#0b0b1e] rounded-xl shadow-lg p-8 border border-cyan-500/30"
         >
           <h2 className="text-3xl font-bold text-center text-cyan-400 mb-2">

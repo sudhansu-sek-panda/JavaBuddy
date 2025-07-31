@@ -1,7 +1,9 @@
 # sticky navbar ✅
-# scroll-up button (jyoti)
+# scroll-up button (jyoti) ✅
 # dark-light theme 
-# java oriented color theme ¯\_( ͡° ͜ʖ ͡°)_/¯ 
+# java oriented color theme ¯\_( ͡° ͜ʖ ͡°)_/¯ ✅
 # firebase auth 
-# footer gradient 
-# 
+# firebase user store
+# footer gradient ✅ 
+# contact page 
+# fix navbar in dashboard 

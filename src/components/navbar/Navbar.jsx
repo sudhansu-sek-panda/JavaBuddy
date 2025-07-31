@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion"; 
 import {
   GraduationCap,
   BookOpenText,
@@ -47,19 +48,32 @@ const Navbar = () => {
     ${showNavbar ? "translate-y-0" : "-translate-y-full"}
     bg-sky-800/30 text-orange-400 backdrop-blur-md shadow-md border-b border-orange-200/20`}
       >
-        {/* Logo */}
-        <div className="text-3xl font-extrabold tracking-wide flex items-center gap-2 ">
-          {/* <GraduationCap className="w-7 h-7 text-white" /> */}
+        <div className="text-3xl font-extrabold tracking-wide flex items-center gap-2">
           <NavLink
             to="/"
-            className="hover:scale-105 transition-transform duration-300"
+            className="hover:scale-105 transition-transform duration-300 flex"
           >
-            JavaBuddy
+            {"JavaBuddy".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                initial={{ rotateZ: 0 }}
+                animate={{ rotateZ: [0, 90, 0] }}
+                transition={{
+                  delay: i * 0.15,
+                  duration: 1,
+                  repeat: Infinity,
+                  repeatDelay: 1.5,
+                  ease: "easeInOut",
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </NavLink>
         </div>
-
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-8 font-semibold items-center">
+        <ul className="hidden md:flex space-x-8 font-bold items-center">
           <li className="flex items-center gap-1 hover:scale-110 hover:text-yellow-300 transition duration-300">
             <BookOpenText className="w-5 h-5" />
             <NavLink to="/about">About</NavLink>
@@ -106,7 +120,6 @@ const Navbar = () => {
             )}
           </li>
         </ul>
-
         {/* Hamburger icon for mobile */}
         <button
           onClick={toggleMobileMenu}
