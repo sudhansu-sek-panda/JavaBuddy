@@ -12,8 +12,13 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { useTheme } from "../../store/store";
+import { FaLightbulb } from "react-icons/fa";
+import { FaRegLightbulb } from "react-icons/fa";
+
 
 const Navbar = () => {
+  const { theme, toggleTheme } = useTheme()
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -80,6 +85,12 @@ const Navbar = () => {
                 </NavLink>
               </div>
             )}
+          </li>
+          <li>
+
+            <button onClick={() => toggleTheme()} className="text-2xl">
+              {theme ? <FaRegLightbulb />:<FaLightbulb />}
+            </button>
           </li>
         </ul>
 
