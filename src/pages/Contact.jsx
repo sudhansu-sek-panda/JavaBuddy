@@ -99,71 +99,104 @@ const Contact = () => {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-4">
-                {["name", "email", "phone", "subject"].map((field, idx) => {
-                  const icons = [
-                    <User />,
-                    <Mail />,
-                    <Phone />,
-                    <MessageSquare />,
-                  ];
-                  const placeholders = [
-                    "Your Name",
-                    "Your Email",
-                    "Phone Number",
-                    "Subject",
-                  ];
-                  const types = ["text", "email", "tel", "text"];
-                  return (
-                    <div key={field} className="relative group">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-300">
-                        {icons[idx]}
-                      </span>
-                      <input
-                        type={types[idx]}
-                        name={field}
-                        value={formData[field]}
-                        onChange={handleChange}
-                        placeholder={placeholders[idx]}
-                        required={field !== "phone"}
-                        className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/30 rounded-xl text-white placeholder-cyan-200 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all hover:bg-white/20 focus:scale-105"
-                      />
-                    </div>
-                  );
-                })}
-
-                <div className="relative group">
-                  <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-cyan-300" />
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Your message..."
-                    rows="4"
-                    required
-                    className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/30 rounded-xl text-white placeholder-cyan-200 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all hover:bg-white/20 resize-none focus:scale-105"
-                  />
-                </div>
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Name */}
+              <div className="relative group">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-300">
+                  <User />
+                </span>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  required
+                  className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/30 rounded-xl text-white placeholder-cyan-200 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all hover:bg-white/20 focus:scale-105"
+                />
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-[#06B6D4] to-[#3B82F6] hover:from-[#0EA5E9] hover:to-[#2563EB] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
-                  </>
-                )}
-              </button>
+              {/* Email */}
+              <div className="relative group">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-300">
+                  <Mail />
+                </span>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your Email"
+                  required
+                  className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/30 rounded-xl text-white placeholder-cyan-200 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all hover:bg-white/20 focus:scale-105"
+                />
+              </div>
+
+              {/* Phone */}
+              <div className="relative group">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-300">
+                  <Phone />
+                </span>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                  className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/30 rounded-xl text-white placeholder-cyan-200 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all hover:bg-white/20 focus:scale-105"
+                />
+              </div>
+
+              {/* Subject */}
+              <div className="relative group">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-300">
+                  <MessageSquare />
+                </span>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Subject"
+                  required
+                  className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/30 rounded-xl text-white placeholder-cyan-200 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all hover:bg-white/20 focus:scale-105"
+                />
+              </div>
+
+              {/* Message */}
+              <div className="relative group sm:col-span-2">
+                <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-cyan-300" />
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Your message..."
+                  rows="4"
+                  required
+                  className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/30 rounded-xl text-white placeholder-cyan-200 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all hover:bg-white/20 resize-none focus:scale-105"
+                />
+              </div>
+
+              {/* Button */}
+              <div className="sm:col-span-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-[#06B6D4] to-[#3B82F6] hover:from-[#0EA5E9] hover:to-[#2563EB] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </form>
           )}
         </div>
