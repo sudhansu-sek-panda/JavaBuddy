@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion"; 
 import {
   GraduationCap,
   BookOpenText,
@@ -22,25 +23,62 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < lastScrollY) {
+      setShowNavbar(true); // scrolling up
+    } else {
+      setShowNavbar(false); // scrolling down
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   return (
-    <div className="w-full bg-gradient-to-r from-emerald-500 to-indigo-700 shadow-lg">
-      <div className="h-[60px] flex justify-between items-center px-6 md:px-10">
-        {/* Logo */}
-        <div className="text-3xl font-extrabold tracking-wide flex items-center gap-2 text-white">
-          <GraduationCap className="w-7 h-7 text-white" />
+    <div className="w-full">
+      <nav
+        className={`h-[60px] px-6 md:px-10 flex justify-between items-center fixed top-0 left-0 right-0 z-50 transition-transform duration-700
+    ${showNavbar ? "translate-y-0" : "-translate-y-full"}
+    bg-sky-800/30 text-orange-400 backdrop-blur-md shadow-md border-b border-orange-200/20`}
+      >
+        <div className="text-3xl font-extrabold tracking-wide flex items-center gap-2">
           <NavLink
             to="/"
-            className="hover:scale-105 transition-transform duration-300"
+            className="hover:scale-105 transition-transform duration-300 flex"
           >
-            JavaBuddy
+            {"JavaBuddy".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                initial={{ rotateZ: 0 }}
+                animate={{ rotateZ: [0, 90, 0] }}
+                transition={{
+                  delay: i * 0.15,
+                  duration: 1,
+                  repeat: Infinity,
+                  repeatDelay: 1.5,
+                  ease: "easeInOut",
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </NavLink>
         </div>
-
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-8 font-semibold text-white items-center">
+        <ul className="hidden md:flex space-x-8 font-bold items-center">
           <li className="flex items-center gap-1 hover:scale-110 hover:text-yellow-300 transition duration-300">
             <BookOpenText className="w-5 h-5" />
             <NavLink to="/about">About</NavLink>
@@ -93,7 +131,6 @@ const Navbar = () => {
             </button>
           </li>
         </ul>
-
         {/* Hamburger icon for mobile */}
         <button
           onClick={toggleMobileMenu}
@@ -101,11 +138,11 @@ const Navbar = () => {
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-      </div>
+      </nav>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white px-6 py-4 space-y-4 shadow-md">
+        <div className="md:hidden bg-sky-700 text-orange-700 px-6 py-4 space-y-4 shadow-md">
           <NavLink
             to="/about"
             className="block text-gray-700 font-semibold"

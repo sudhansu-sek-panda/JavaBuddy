@@ -12,7 +12,7 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);   
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
