@@ -17,7 +17,7 @@ import AdminSignIn from "./pages/admin/AdminSignIn";
 import AdminDashboard from "./components/dashboard/AdminDashboard";
 import ContactMessage from "./components/admindashboardpages/ContactMessage";
 import UserCards from "./components/admindashboardpages/UserCards";
-import Dashboard from "./components/dashboard/dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
 import Introduction from "./components/dashboardpages/introduction/Introduction";
 import Installations from "./components/dashboardpages/installation/Installations";
 import Identifier from "./components/dashboardpages/identifier/Identifier";
