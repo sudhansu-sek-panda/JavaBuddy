@@ -130,6 +130,7 @@ const Navbar = () => {
             </button>
           </li>
         </ul>
+
         {/* Hamburger icon for mobile */}
         <button
           onClick={toggleMobileMenu}
@@ -141,39 +142,41 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-sky-700 text-orange-700 px-6 py-4 space-y-4 shadow-md">
+        <div
+          className="pt-20 md:hidden bg-gradient-to-br from-sky-900 via-slate-800 to-orange-900 text-white px-6 py-4 space-y-4 shadow-md"
+        >
           <NavLink
             to="/about"
-            className="block text-gray-700 font-semibold"
+            className="block font-semibold"
             onClick={() => setMobileMenuOpen(false)}
           >
             About
           </NavLink>
           <NavLink
             to="/roadmap"
-            className="block text-gray-700 font-semibold"
+            className="block font-semibold"
             onClick={() => setMobileMenuOpen(false)}
           >
             Roadmap
           </NavLink>
           <NavLink
             to="/contact"
-            className="block text-gray-700 font-semibold"
+            className="block font-semibold"
             onClick={() => setMobileMenuOpen(false)}
           >
             Contact
           </NavLink>
-          <div className="border-t pt-3 bg-black">
+          <div className="border-t pt-3 bg-transparent">
             <NavLink
               to="/user/signin"
-              className="block text-gray-700 font-semibold bg-black"
+              className="block font-semibold pb-2 hover:text-slate-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               User Login
             </NavLink>
             <NavLink
               to="/admin/signin"
-              className="block text-gray-700 font-semibold"
+              className="block font-semibold hover:text-slate-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               Admin Login
