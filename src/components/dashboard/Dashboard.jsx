@@ -12,19 +12,20 @@ import {
   Grid,
   AlertTriangle,
   HelpCircle,
+   Search
 } from "lucide-react";
 
 import ScrollPage from "../scrollButton/ScrollPage";
 
 const SidebarItem = ({ title, links, icon: Icon, isOpen, onClick }) => {
   return (
-    <div className="group">
+    <div className="group ">
       <div
         onClick={onClick}
         role="button"
         tabIndex={0}
         aria-expanded={isOpen}
-        className="flex items-center justify-between px-4 py-3 font-medium cursor-pointer text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg border border-white/10 backdrop-blur-sm"
+        className="flex items-center justify-between px-4 py-3 font-medium cursor-pointer text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg border border-white/10 backdrop-blur-sm "
       >
         <div className="flex items-center space-x-3">
           {Icon && (
@@ -80,6 +81,8 @@ const SidebarItem = ({ title, links, icon: Icon, isOpen, onClick }) => {
 const Dashboard = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+
 
   const sidebarData = [
     {
@@ -210,33 +213,47 @@ const Dashboard = () => {
   }, [location]);
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 mt-14" >
       <aside className="w-80 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 p-4 space-y-3 overflow-y-auto scrollbar-hide shadow-2xl relative">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 backdrop-blur-3xl"></div>
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
 
         <div className="relative z-10 text-center mb-8">
-          <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+          <div className=" bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
             <div className="flex items-center justify-center space-x-3 mb-2">
               <div className="p-2 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg shadow-lg">
-                <Code size={24} className="text-white" />
-              </div>
-              <h1 className="text-2xl font-bold text-white">Java Buddy</h1>
+                < Search size={24} className="text-black "/>
+              </div >
+              <input
+              type="search"
+              placeholder="Search by topic name.."
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full sm:w-64 md:w-72 text-black h-9 rounded-md p-3 outline-none border border-gray-300 hover:shadow-md hover:shadow-orange-500 focus:shadow-md transition-all duration-300 "
+            />
             </div>
           </div>
         </div>
+        
 
         <div className="relative z-10 space-y-2">
-          {sidebarData.map((item, index) => (
-            <SidebarItem
-              key={index}
-              title={item.title}
-              links={item.links}
-              icon={item.icon}
-              isOpen={openIndex === index}
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            />
-          ))}
+         
+       {sidebarData.filter((item) => {
+         const q = searchQuery.toLowerCase();
+          return item.title.toLowerCase().includes(q) ||   item.links.some((link) => link.label.toLowerCase().includes(q));
+           })
+        .map((item, index) => (
+        <SidebarItem
+       key={index}
+       title={item.title}
+       icon={item.icon}
+       isOpen={openIndex === index}
+       onClick={() => setOpenIndex(openIndex === index ? null : index)}
+       links={item.links.filter((link) =>
+       link.label.toLowerCase().includes(searchQuery.toLowerCase())
+       )}
+    />
+  ))}
+
         </div>
 
         <div className="relative z-10 mt-8 pt-4 border-t border-white/10 text-center">
