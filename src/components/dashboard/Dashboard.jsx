@@ -13,7 +13,7 @@ import {
   Grid,
   AlertTriangle,
   HelpCircle,
-   Search
+  Search,
 } from "lucide-react";
 
 import ScrollPage from "../scrollButton/ScrollPage";
@@ -85,7 +85,6 @@ const Dashboard = () => {
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
 
-
   const sidebarData = [
     {
       title: "Introduction",
@@ -156,21 +155,36 @@ const Dashboard = () => {
       links: [
         { label: "Object Class", path: "/dashboard/lang/objectclass" },
         { label: "String Class", path: "/dashboard/lang/stringclass" },
-        { label: "String Class Methods", path: "/dashboard/lang/stringmethods" },
+        {
+          label: "String Class Methods",
+          path: "/dashboard/lang/stringmethods",
+        },
         { label: "StringBuffer Class", path: "/dashboard/lang/stringbuffer" },
-        { label: "StringBuffer Class Methods", path: "/dashboard/lang/stringbuffermethods" },
+        {
+          label: "StringBuffer Class Methods",
+          path: "/dashboard/lang/stringbuffermethods",
+        },
         { label: "StringBuilder Class", path: "/dashboard/lang/stringbuilder" },
         { label: "Wrapper Class", path: "/dashboard/lang/wrapperclass" },
-        { label: "Wrapper Constructors", path: "/dashboard/lang/wrapperconstructors" },
+        {
+          label: "Wrapper Constructors",
+          path: "/dashboard/lang/wrapperconstructors",
+        },
         { label: "Utility Methods", path: "/dashboard/lang/wrappermethods" },
-        { label: "Autoboxing/Autounboxing", path: "/dashboard/lang/autoboxing" },
+        {
+          label: "Autoboxing/Autounboxing",
+          path: "/dashboard/lang/autoboxing",
+        },
       ],
     },
     {
       title: "Collection Framework",
       icon: Grid,
       links: [
-        { label: "CollectionFramework", path: "/dashboard/collection/framework" },
+        {
+          label: "CollectionFramework",
+          path: "/dashboard/collection/framework",
+        },
         { label: "List", path: "/dashboard/collection/list" },
         { label: "Set", path: "/dashboard/collection/set" },
         { label: "Queue", path: "/dashboard/collection/queue" },
@@ -206,7 +220,7 @@ const Dashboard = () => {
       {/* Sidebar Toggle Button at side */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className={`absolute z-50 top-1/2 -translate-y-1/2 transition-all duration-300 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 ${
+        className={`absolute z-50 top-1/2 -translate-y-1/2 transition-all duration-300 p-2 bg-black rounded-full shadow-md hover:bg-gray-100 hover:text-black ${
           isSidebarOpen ? "left-80" : "left-2"
         }`}
       >
@@ -217,7 +231,8 @@ const Dashboard = () => {
       <aside
         className={`${
           isSidebarOpen ? "w-80" : "w-0"
-        } bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 p-4 pt-14 space-y-3 overflow-y-auto scrollbar-hide shadow-2xl relative transition-all duration-300`}
+        } bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800
+ p-4 pt-14 space-y-3 overflow-y-auto scrollbar-hide shadow-2xl relative transition-all duration-300`}
       >
         {isSidebarOpen && (
           <>
@@ -225,27 +240,50 @@ const Dashboard = () => {
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
 
             <div className="relative z-10 text-center mb-8">
-              <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                <div className="flex items-center justify-center space-x-3 mb-2">
-                  <div className="p-2 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg shadow-lg">
-                    <Code size={24} className="text-white" />
-                  </div>
-                  <h1 className="text-2xl font-bold text-white">Java Buddy</h1>
+              <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-1 border border-white/20">
+                <div className="flex items-center justify-center space-x-3">
+                  {/* <div className="p-2 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg shadow-lg">
+                    <Search size={24} className="text-black " />
+                  </div> */}
+                  <input
+                    type="search"
+                    placeholder="Search by topic name.."
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full sm:w-64 md:w-72 text-aqua h-9 rounded-lg p-3 outline-none border border-gray-300 bg-transparent
+             hover:shadow-md hover:shadow-orange-500 focus:shadow-md transition-all duration-300 
+             animate-glow border-none"
+                  />
                 </div>
               </div>
             </div>
 
             <div className="relative z-10 space-y-2">
-              {sidebarData.map((item, index) => (
-                <SidebarItem
-                  key={index}
-                  title={item.title}
-                  links={item.links}
-                  icon={item.icon}
-                  isOpen={openIndex === index}
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                />
-              ))}
+              {sidebarData
+                .filter((item) => {
+                  const q = searchQuery.toLowerCase();
+                  return (
+                    item.title.toLowerCase().includes(q) ||
+                    item.links.some((link) =>
+                      link.label.toLowerCase().includes(q)
+                    )
+                  );
+                })
+                .map((item, index) => (
+                  <SidebarItem
+                    key={index}
+                    title={item.title}
+                    icon={item.icon}
+                    isOpen={openIndex === index}
+                    onClick={() =>
+                      setOpenIndex(openIndex === index ? null : index)
+                    }
+                    links={item.links.filter((link) =>
+                      link.label
+                        .toLowerCase()
+                        .includes(searchQuery.toLowerCase())
+                    )}
+                  />
+                ))}
             </div>
 
             <div className="relative z-10 mt-8 pt-4 border-t border-white/10 text-center">
@@ -258,7 +296,8 @@ const Dashboard = () => {
       {/* Main Content */}
       <main
         id="main-scroll"
-        className="flex-1 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 p-8 overflow-y-auto scrollbar-hide transition-all duration-300"
+        className="flex-1 bg-gradient-to-br from-zinc-900 via-neutral-900 to-gray-800
+ p-8 overflow-y-auto scrollbar-hide transition-all duration-300"
       >
         <div className="max-w-6xl mx-auto pt-10 ">
           <Outlet />
