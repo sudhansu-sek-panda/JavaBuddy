@@ -4,6 +4,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { Eye, EyeOff } from "lucide-react";
 import { motion } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../db/firebase";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -13,27 +15,25 @@ const SignIn = () => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const storedUser = JSON.parse(localStorage.getItem("logindetails"));
-    const token = "ekwokd30i93rk20o121enmmfoe3";
 
-    if (!storedUser) {
-      toast.error("No user found. Please sign up first.");
-      return;
-    }
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
 
-    if (
-      formData.email === storedUser.email &&
-      formData.password === storedUser.password
-    ) {
+      const user = userCredential.user;
+
       toast.success("Login successful!");
       setTimeout(() => {
-        localStorage.setItem("jwttoken", token);
         navigate("/dashboard");
       }, 1500);
-    } else {
+    } catch (error) {
       toast.error("Invalid email or password.");
+      console.error("Firebase SignIn Error:", error.message);
     }
   };
 
@@ -62,8 +62,8 @@ const SignIn = () => {
       {/* Right Panel */}
       <div className="lg:w-1/2 flex items-center justify-center py-16 px-6">
         <motion.div
-          initial={{ opacity: 0, x: -100 }} // Slide from left
-          animate={{ opacity: 1, x: 0 }} // To center
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full max-w-md bg-[#0b0b1e] rounded-xl shadow-lg p-8 border border-cyan-500/30"
         >

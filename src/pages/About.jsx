@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, Users, Award, Code, Sparkles, Heart, Zap, Target } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const cardData = [
   {
@@ -132,7 +133,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="overflow-x-hidden min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e] text-white relative">
+    <div className="overflow-x-hidden h-auto bg-gradient-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e] text-white relative">
       {/* Animated Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,173,181,0.1),transparent_50%)]"></div>
@@ -158,7 +159,7 @@ const About = () => {
 
       <div className="relative z-10 py-20 px-6 md:px-20">
         {/* Header Section */}
-        <motion.div 
+        <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -180,7 +181,8 @@ const About = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            Discover what makes us the perfect companion for your Java learning journey
+            Discover what makes us the perfect companion for your Java learning
+            journey
           </motion.p>
         </motion.div>
 
@@ -189,7 +191,7 @@ const About = () => {
           {cardData.map((card, idx) => {
             const isLeft = idx % 2 === 0;
             const IconComponent = card.icon;
-            
+
             return (
               <motion.div
                 key={idx}
@@ -210,23 +212,30 @@ const About = () => {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   {/* Floating Particles */}
-                  <FloatingParticles particles={card.particles} color={card.color} />
-                  
+                  <FloatingParticles
+                    particles={card.particles}
+                    color={card.color}
+                  />
+
                   {/* Glowing Ring */}
                   <motion.div
                     className={`absolute inset-0 rounded-full bg-gradient-to-r ${card.color} p-1 opacity-0 group-hover:opacity-100`}
                     animate={hoveredCard === idx ? { rotate: 360 } : {}}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                   >
                     <div className="w-full h-full rounded-full bg-[#1A1A2E]"></div>
                   </motion.div>
-                  
+
                   {/* Main Image */}
                   <motion.div
                     className="relative z-10 w-40 h-40 rounded-full bg-gradient-to-br from-[#1A1A2E] to-[#0F3460] p-4 shadow-2xl border border-[#00ADB5]/30"
-                    whileHover={{ 
+                    whileHover={{
                       boxShadow: "0 0 50px rgba(0, 173, 181, 0.5)",
-                      borderColor: "rgba(0, 173, 181, 0.8)"
+                      borderColor: "rgba(0, 173, 181, 0.8)",
                     }}
                   >
                     <img
@@ -234,22 +243,30 @@ const About = () => {
                       alt={card.title}
                       className="w-full h-full object-contain filter brightness-110"
                     />
-                    
+
                     {/* Floating Icon */}
                     <motion.div
                       className={`absolute -top-2 -right-2 w-12 h-12 rounded-full bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg`}
                       animate={hoveredCard === idx ? { y: [-5, 5, -5] } : {}}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
                     >
                       <IconComponent className="w-6 h-6 text-white" />
                     </motion.div>
                   </motion.div>
-                  
+
                   {/* Pulse Effect */}
                   <motion.div
                     className={`absolute inset-0 rounded-full bg-gradient-to-r ${card.color} opacity-20`}
                     animate={hoveredCard === idx ? { scale: [1, 1.2, 1] } : {}}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
                   />
                 </motion.div>
 
@@ -260,25 +277,29 @@ const About = () => {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   {/* Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${card.color} rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}></div>
-                  
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-r ${card.color} rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}
+                  ></div>
+
                   {/* Main Content */}
                   <div className="relative bg-[#0F3460]/80 backdrop-blur-xl p-8 rounded-xl shadow-2xl border border-[#00ADB5]/20 group-hover:border-[#00ADB5]/50 transition-all duration-300">
                     {/* Title with Icon */}
                     <div className="flex items-center gap-3 mb-4">
-                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center`}>
+                      <div
+                        className={`w-8 h-8 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center`}
+                      >
                         <IconComponent className="w-4 h-4 text-white" />
                       </div>
                       <h3 className="text-3xl font-semibold text-[#00ADB5] group-hover:text-[#00f5ff] transition-colors duration-300">
                         {card.title}
                       </h3>
                     </div>
-                    
+
                     {/* Description */}
                     <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
                       {card.description}
                     </p>
-                    
+
                     {/* Decorative Elements */}
                     <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
                       <Target className="w-6 h-6 text-[#00ADB5]" />
@@ -291,7 +312,7 @@ const About = () => {
         </div>
 
         {/* Enhanced Team Section */}
-        <motion.div 
+        <motion.div
           className="mt-32"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -309,9 +330,11 @@ const About = () => {
               </h2>
               <Users className="text-[#00ADB5] w-8 h-8" />
             </motion.div>
-            <p className="text-gray-300 text-lg">The passionate minds behind your learning experience</p>
+            <p className="text-gray-300 text-lg">
+              The passionate minds behind your learning experience
+            </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamData.map((member, idx) => (
               <motion.div
@@ -319,7 +342,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   rotateY: 5,
                 }}
@@ -327,8 +350,10 @@ const About = () => {
                 viewport={{ once: true }}
               >
                 {/* Card Background */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${member.color} rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}></div>
-                
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r ${member.color} rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}
+                ></div>
+
                 {/* Main Card */}
                 <div className="relative bg-[#1A1A2E]/90 backdrop-blur-xl rounded-xl p-6 text-center shadow-2xl border border-[#00ADB5]/20 group-hover:border-[#00ADB5]/50 transition-all duration-300">
                   {/* Profile Image */}
@@ -337,7 +362,9 @@ const About = () => {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.8 }}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-r ${member.color} rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-r ${member.color} rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                    >
                       <div className="w-full h-full rounded-full bg-[#1A1A2E]"></div>
                     </div>
                     <img
@@ -349,24 +376,32 @@ const About = () => {
                     <motion.div
                       className={`absolute -top-1 -right-1 w-8 h-8 rounded-full bg-gradient-to-r ${member.color} flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100`}
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
                     >
                       <Zap className="w-4 h-4 text-white" />
                     </motion.div>
                   </motion.div>
-                  
+
                   {/* Member Info */}
                   <h3 className="text-xl font-semibold mb-1 group-hover:text-[#00ADB5] transition-colors duration-300">
                     {member.name}
                   </h3>
                   <p className="text-sm text-gray-400 mb-2">{member.role}</p>
-                  <p className={`text-sm font-medium bg-gradient-to-r ${member.color} bg-clip-text text-transparent`}>
+                  <p
+                    className={`text-sm font-medium bg-gradient-to-r ${member.color} bg-clip-text text-transparent`}
+                  >
                     {member.skill}
                   </p>
-                  
+
                   {/* Decorative Corner */}
                   <div className="absolute top-2 right-2 opacity-20 group-hover:opacity-60 transition-opacity duration-300">
-                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${member.color}`}></div>
+                    <div
+                      className={`w-3 h-3 rounded-full bg-gradient-to-r ${member.color}`}
+                    ></div>
                   </div>
                 </div>
               </motion.div>
@@ -375,14 +410,14 @@ const About = () => {
         </motion.div>
 
         {/* Enhanced Tech Stack Section */}
-        <motion.div 
+        <motion.div
           className="mt-32 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#00ADB5] to-[#00f5ff] bg-clip-text text-transparent"
             whileHover={{ scale: 1.05 }}
           >
@@ -390,54 +425,115 @@ const About = () => {
           </motion.h2>
           <div className="flex justify-center items-center gap-16 flex-wrap">
             {/* React */}
-            <motion.div
-              whileHover={{ 
-                scale: 1.2, 
-                rotateY: 180,
-                filter: "drop-shadow(0 0 20px rgba(97, 218, 251, 0.8))"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="flex flex-col items-center cursor-pointer group"
+            <a
+              href="https://react.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <div className="relative">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full opacity-0 group-hover:opacity-20 blur-xl"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                />
-                <img
-                  src="https://cdn.worldvectorlogo.com/logos/react-2.svg"
-                  alt="React"
-                  className="relative z-10 w-20 h-20 group-hover:brightness-125 transition-all duration-300"
-                />
-              </div>
-              <p className="mt-3 font-medium text-white group-hover:text-cyan-400 transition-colors duration-300">React</p>
-            </motion.div>
+              <motion.div
+                whileHover={{
+                  scale: 1.2,
+                  rotateY: 180,
+                  filter: "drop-shadow(0 0 20px rgba(97, 218, 251, 0.8))",
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="flex flex-col items-center cursor-pointer group"
+              >
+                <div className="relative">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full opacity-0 group-hover:opacity-20 blur-xl"
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                  <img
+                    src="https://cdn.worldvectorlogo.com/logos/react-2.svg"
+                    alt="React"
+                    className="relative z-10 w-20 h-20 group-hover:brightness-125 transition-all duration-300"
+                  />
+                </div>
+                <p className="mt-3 font-medium text-white group-hover:text-cyan-400 transition-colors duration-300">
+                  React
+                </p>
+              </motion.div>
+            </a>
 
             {/* Tailwind CSS */}
-            <motion.div
-              whileHover={{ 
-                scale: 1.2, 
-                rotateY: -180,
-                filter: "drop-shadow(0 0 20px rgba(56, 189, 248, 0.8))"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="flex flex-col items-center cursor-pointer group"
+            <a
+              href="https://v3.tailwindcss.com/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <div className="relative">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-0 group-hover:opacity-20 blur-xl"
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                />
-                <img
-                  src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
-                  alt="Tailwind CSS"
-                  className="relative z-10 w-20 h-20 group-hover:brightness-125 transition-all duration-300"
-                />
-              </div>
-              <p className="mt-3 font-medium text-white group-hover:text-blue-400 transition-colors duration-300">Tailwind CSS</p>
-            </motion.div>
+              <motion.div
+                whileHover={{
+                  scale: 1.2,
+                  rotateY: -180,
+                  filter: "drop-shadow(0 0 20px rgba(56, 189, 248, 0.8))",
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="flex flex-col items-center cursor-pointer group"
+              >
+                <div className="relative">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-0 group-hover:opacity-20 blur-xl"
+                    animate={{ rotate: -360 }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                  <img
+                    src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
+                    alt="Tailwind CSS"
+                    className="relative z-10 w-20 h-20 group-hover:brightness-125 transition-all duration-300"
+                  />
+                </div>
+                <p className="mt-3 font-medium text-white group-hover:text-blue-400 transition-colors duration-300">
+                  Tailwind CSS
+                </p>
+              </motion.div>
+            </a>
+
+            {/* Firebase */}
+            <a
+              href="https://firebase.google.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <motion.div
+                whileHover={{
+                  scale: 1.2,
+                  rotateY: 180,
+                  filter: "drop-shadow(0 0 20px rgba(255, 193, 7, 0.8))",
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="flex flex-col items-center cursor-pointer group"
+              >
+                <div className="relative">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-0 group-hover:opacity-20 blur-xl"
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                  <img
+                    src="https://cdn.worldvectorlogo.com/logos/firebase-1.svg"
+                    alt="Firebase"
+                    className="relative z-10 w-20 h-20 group-hover:brightness-125 transition-all duration-300"
+                  />
+                </div>
+                <p className="mt-3 font-medium text-white group-hover:text-yellow-300 transition-colors duration-300">
+                  Firebase
+                </p>
+              </motion.div>
+            </a>
           </div>
         </motion.div>
       </div>

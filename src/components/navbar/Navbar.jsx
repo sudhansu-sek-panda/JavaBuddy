@@ -104,10 +104,10 @@ const Navbar = () => {
             </button>
 
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg overflow-hidden z-50">
+              <div className="absolute right-0 mt-2 w-40 bg-[#0f0f3f] text-orange-500  shadow-lg rounded-lg overflow-hidden z-50">
                 <NavLink
                   to="/user/signin"
-                  className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700"
+                  className="flex items-center px-4 py-2 text-sm hover:bg-indigo-100 hover:text-indigo-700"
                   onClick={() => setDropdownOpen(false)}
                 >
                   <User className="w-4 h-4 mr-2" />
@@ -115,7 +115,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                   to="/admin/signin"
-                  className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100 hover:text-indigo-700"
+                  className="flex items-center px-4 py-2 text-sm hover:bg-indigo-100 hover:text-indigo-700"
                   onClick={() => setDropdownOpen(false)}
                 >
                   <Shield className="w-4 h-4 mr-2" />
@@ -125,9 +125,8 @@ const Navbar = () => {
             )}
           </li>
           <li>
-
             <button onClick={() => toggleTheme()} className="text-2xl">
-              {theme ? <FaRegLightbulb />:<FaLightbulb />}
+              {theme ? <FaRegLightbulb /> : <FaLightbulb />}
             </button>
           </li>
         </ul>
@@ -164,10 +163,10 @@ const Navbar = () => {
           >
             Contact
           </NavLink>
-          <div className="border-t pt-3">
+          <div className="border-t pt-3 bg-black">
             <NavLink
               to="/user/signin"
-              className="block text-gray-700 font-semibold"
+              className="block text-gray-700 font-semibold bg-black"
               onClick={() => setMobileMenuOpen(false)}
             >
               User Login

@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Eye, EyeOff, ImagePlus } from "lucide-react";
 import { motion } from "framer-motion";
+import { auth } from "../../../db/firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +42,7 @@ const SignUp = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -49,15 +51,29 @@ const SignUp = () => {
     }
 
     try {
-      const userData = { ...formData, profileImage: previewImage };
-      localStorage.setItem("logindetails", JSON.stringify(userData));
-      toast.success("SignUp successful!");
-      navigate("/signin");
+      // Create user in Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+
+      const user = userCredential.user;
+
+      // Set display name and profile photo
+      await updateProfile(user, {
+        displayName: formData.nickname || formData.username,
+        photoURL: previewImage || null,
+      });
+
+      toast.success("Signup successful!");
+      navigate("/user/signin");
     } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong.");
+      console.error("Signup Error:", error.message);
+      toast.error(error.message);
     }
   };
+
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row font-sans">
