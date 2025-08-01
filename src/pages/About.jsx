@@ -1,7 +1,15 @@
-
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Users, Award, Code, Sparkles, Heart, Zap, Target } from "lucide-react";
+import {
+  BookOpen,
+  Users,
+  Award,
+  Code,
+  Sparkles,
+  Heart,
+  Zap,
+  Target,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const cardData = [
@@ -15,8 +23,8 @@ const cardData = [
     particles: [
       { id: 1, delay: 0, duration: 3 },
       { id: 2, delay: 1, duration: 4 },
-      { id: 3, delay: 2, duration: 3.5 }
-    ]
+      { id: 3, delay: 2, duration: 3.5 },
+    ],
   },
   {
     title: "Beginner Friendly",
@@ -28,8 +36,8 @@ const cardData = [
     particles: [
       { id: 1, delay: 0.5, duration: 3.2 },
       { id: 2, delay: 1.5, duration: 3.8 },
-      { id: 3, delay: 0.8, duration: 3.5 }
-    ]
+      { id: 3, delay: 0.8, duration: 3.5 },
+    ],
   },
   {
     title: "Expert-Curated Content",
@@ -41,8 +49,8 @@ const cardData = [
     particles: [
       { id: 1, delay: 0.3, duration: 3.7 },
       { id: 2, delay: 1.2, duration: 3.1 },
-      { id: 3, delay: 2.1, duration: 3.9 }
-    ]
+      { id: 3, delay: 2.1, duration: 3.9 },
+    ],
   },
   {
     title: "Apply as You Learn",
@@ -54,8 +62,8 @@ const cardData = [
     particles: [
       { id: 1, delay: 0.7, duration: 3.3 },
       { id: 2, delay: 1.8, duration: 3.6 },
-      { id: 3, delay: 0.2, duration: 3.4 }
-    ]
+      { id: 3, delay: 0.2, duration: 3.4 },
+    ],
   },
 ];
 
@@ -65,28 +73,28 @@ const teamData = [
     role: "",
     img: "https://cdn-icons-png.flaticon.com/512/4140/4140047.png",
     skill: "",
-    color: "from-blue-400 to-purple-500"
+    color: "from-blue-400 to-purple-500",
   },
   {
     name: "Sailaja Das",
     role: "",
     img: "https://cdn-icons-png.flaticon.com/512/4140/4140051.png",
     skill: "",
-    color: "from-pink-400 to-red-500"
+    color: "from-pink-400 to-red-500",
   },
   {
     name: "Sudhansu",
     role: "",
     img: "https://cdn-icons-png.flaticon.com/512/4140/4140039.png",
     skill: "",
-    color: "from-green-400 to-blue-500"
+    color: "from-green-400 to-blue-500",
   },
   {
     name: "Rupesh",
     role: "",
     img: "https://cdn-icons-png.flaticon.com/512/4140/4140061.png",
     skill: "",
-    color: "from-yellow-400 to-orange-500"
+    color: "from-yellow-400 to-orange-500",
   },
 ];
 
@@ -97,10 +105,10 @@ const FloatingParticles = ({ particles, color }) => {
         <motion.div
           key={particle.id}
           className={`absolute w-2 h-2 rounded-full bg-gradient-to-r ${color} opacity-60`}
-          initial={{ 
+          initial={{
             x: Math.random() * 100 + "%",
             y: Math.random() * 100 + "%",
-            scale: 0
+            scale: 0,
           }}
           animate={{
             x: Math.random() * 100 + "%",
@@ -111,7 +119,7 @@ const FloatingParticles = ({ particles, color }) => {
             duration: particle.duration,
             delay: particle.delay,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
       ))}
@@ -128,8 +136,8 @@ const About = () => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
@@ -282,13 +290,13 @@ const About = () => {
                   ></div>
 
                   {/* Main Content */}
-                  <div className="relative bg-[#0F3460]/80 backdrop-blur-xl p-8 rounded-xl shadow-2xl border border-[#00ADB5]/20 group-hover:border-[#00ADB5]/50 transition-all duration-300">
+                  <div className="relative bg-[#0F3460]/80 backdrop-blur-xl p-2 md:p-6 lg:p-8 rounded-xl shadow-2xl border border-[#00ADB5]/20 group-hover:border-[#00ADB5]/50 transition-all duration-300 ">
                     {/* Title with Icon */}
                     <div className="flex items-center gap-3 mb-4">
                       <div
-                        className={`w-8 h-8 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center`}
+                        className={`w-10 h-8 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center`}
                       >
-                        <IconComponent className="w-4 h-4 text-white" />
+                        <IconComponent className="w-4 h-6 text-white" />
                       </div>
                       <h3 className="text-3xl font-semibold text-[#00ADB5] group-hover:text-[#00f5ff] transition-colors duration-300">
                         {card.title}
