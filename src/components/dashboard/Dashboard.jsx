@@ -220,8 +220,8 @@ const Dashboard = () => {
       {/* Sidebar Toggle Button at side */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className={`absolute z-50 top-1/2 -translate-y-1/2 transition-all duration-300 p-2 bg-black rounded-full shadow-md hover:bg-gray-100 hover:text-black ${
-          isSidebarOpen ? "left-80" : "left-2"
+        className={`fixed sm:absolute z-50 top-4 sm:top-1/2 sm:-translate-y-1/2 transition-all duration-300 p-2 bg-black rounded-full shadow-md hover:bg-gray-100 hover:text-black ${
+          isSidebarOpen ? "left-72 sm:left-80" : "left-2"
         }`}
       >
         {isSidebarOpen ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
@@ -230,9 +230,9 @@ const Dashboard = () => {
       {/* Sidebar */}
       <aside
         className={`${
-          isSidebarOpen ? "w-80" : "w-0"
+          isSidebarOpen ? "w-72 sm:w-80" : "w-0"
         } bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800
- p-4 pt-14 space-y-3 overflow-y-auto scrollbar-hide shadow-2xl relative transition-all duration-300`}
+  px-3 sm:px-4 pt-14 space-y-3 overflow-y-auto scrollbar-hide shadow-2xl transition-all duration-300 relative`}
       >
         {isSidebarOpen && (
           <>
@@ -249,9 +249,9 @@ const Dashboard = () => {
                     type="search"
                     placeholder="Search by topic name.."
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full sm:w-64 md:w-72 text-aqua h-9 rounded-lg p-3 outline-none border border-gray-300 bg-transparent
-             hover:shadow-md hover:shadow-orange-500 focus:shadow-md transition-all duration-300 
-             animate-glow border-none"
+                    className="w-full sm:w-64 md:w-72 text-aqua h-9 rounded-lg px-4 py-2 outline-none border border-gray-300 bg-transparent
+    hover:shadow-md hover:shadow-orange-500 focus:shadow-md transition-all duration-300 
+    animate-glow border-none"
                   />
                 </div>
               </div>
