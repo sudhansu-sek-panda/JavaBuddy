@@ -75,14 +75,17 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] flex items-center justify-center px-4 sm:px-6 md:px-8 py-20">
+      <div className="w-full max-w-lg">
         <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 p-8 shadow-2xl hover:scale-105 transition-all duration-300">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
               <Mail className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-3xl font-bold text-white mb-2">Contact Us</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+              Contact Us
+            </h2>
+
             <p className="text-cyan-100">We'd love to hear from you</p>
           </div>
 
@@ -91,7 +94,7 @@ const Contact = () => {
               <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
                 <Send className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
                 Message Sent!
               </h3>
               <p className="text-emerald-100">
@@ -99,7 +102,10 @@ const Contact = () => {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <form
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            >
               {/* Name */}
               <div className="relative group">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-300">

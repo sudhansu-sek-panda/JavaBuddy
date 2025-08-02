@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import { Eye, EyeOff, ImagePlus } from "lucide-react";
 import { motion } from "framer-motion";
 import { auth } from "../../../db/firebase";
+import { db } from "../../../db/firebase";
+import { doc, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const SignUp = () => {
@@ -65,6 +67,17 @@ const SignUp = () => {
         displayName: formData.nickname || formData.username,
         photoURL: previewImage || null,
       });
+
+
+       await setDoc(doc(db, "users", user.uid), {
+         uid: user.uid,
+         username: formData.username,
+         nickname: formData.nickname,
+         email: formData.email,
+         photoURL: previewImage || null,
+         createdAt: new Date(),
+         role: "user",
+       });
 
       toast.success("Signup successful!");
       navigate("/user/signin");

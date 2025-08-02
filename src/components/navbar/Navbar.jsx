@@ -79,18 +79,24 @@ const Navbar = () => {
         </div>
         {/* Desktop Navigation */}
         <ul className="hidden md:flex space-x-8 font-bold items-center">
-          <li className="flex items-center gap-1 hover:scale-110 hover:text-yellow-300 transition duration-300">
-            <BookOpenText className="w-5 h-5" />
-            <NavLink to="/about">About</NavLink>
-          </li>
-          <li className="flex items-center gap-1 hover:scale-110 hover:text-yellow-300 transition duration-300">
-            <Route className="w-5 h-5" />
-            <NavLink to="/roadmap">Roadmap</NavLink>
-          </li>
-          <li className="flex items-center gap-1 hover:scale-110 hover:text-yellow-300 transition duration-300">
-            <MessageCircleMore className="w-5 h-5" />
-            <NavLink to="/contact">Contact</NavLink>
-          </li>
+          <NavLink to="/about">
+            <li className="flex items-center gap-1 hover:scale-110 hover:text-yellow-300 transition duration-300">
+              <BookOpenText className="w-5 h-5" />
+              About
+            </li>
+          </NavLink>
+          <NavLink to="/roadmap">
+            <li className="flex items-center gap-1 hover:scale-110 hover:text-yellow-300 transition duration-300">
+              <Route className="w-5 h-5" />
+              Roadmap
+            </li>
+          </NavLink>
+          <NavLink to="/contact">
+            <li className="flex items-center gap-1 hover:scale-110 hover:text-yellow-300 transition duration-300">
+              <MessageCircleMore className="w-5 h-5" />
+              Contact
+            </li>
+          </NavLink>
 
           {/* Dropdown for Admin/User */}
           <li className="relative">
@@ -142,9 +148,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div
-          className="pt-20 md:hidden bg-gradient-to-br from-sky-900 via-slate-800 to-orange-900 text-white px-6 py-4 space-y-4 shadow-md"
-        >
+        <div className="pt-20 md:hidden bg-gradient-to-br from-sky-900 via-slate-800 to-orange-900 text-white px-6 py-4 space-y-4 shadow-md">
           <NavLink
             to="/about"
             className="block font-semibold"

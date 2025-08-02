@@ -98,7 +98,7 @@ const SignIn = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-black/20 text-white border border-cyan-500 rounded-lg focus:ring-2 focus:ring-cyan-400 outline-none"
                 required
-              />
+              /> 
               <span
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer hover:text-cyan-300 transition"
