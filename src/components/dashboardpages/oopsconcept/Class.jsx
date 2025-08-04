@@ -2,11 +2,12 @@ import React from "react";
 import ClassImg from '../../../assets/images/class/classObject.webp'
 import ComponentClass from '../../../assets/images/class/classPlane.png'
 import KeyImg from '../../../assets/images/class/ReservedWords.png'
+import ObjectImg from '../../../assets/images/objects/Object.png'
 const classCard = [
   {
 id:1, 
 topicClass: ["🧠Class"],
-classDefinition:"A Class is Logical entity or Blue print using which we can create multiple Object. ",
+classDefinition:[ "A class is a blueprint for creating objects. It defines properties and behaviours that its objects will have. Classes are fundamental to Java's Object-Oriented Programming paradigm."],
 NotePoint1: [
   "We cannot create an Object without a Class. Hence to create n number of objects we require class.  ",
   "Multiple Objects created using same class is called as Similar Object or Identical Object. ",
@@ -65,30 +66,41 @@ classExample:[
 {
   id:2,
   keywordTopic:[" 📦Keywords or Reserved Words : "],
-   keywordPoint1: ["A keyword is a reserved word that has a predefined meaning in the language's syntax and cannot be used as an identifier—like variable names, method names, or class names."],
+   keywordPoint1: ["✅  In Java, a keyword is a reserved word that has a predefined meaning in the language and cannot be used as a variable name, class name, method name, or identifier."," ✅  These words are part of the syntax and are used to perform specific operations."],
   keywordImg:KeyImg,
 }
 ,
 {
   id:3, 
   ObjectTopic:[ "👯Object"],
-  ObjectPoint1:["Object is Real world Physical entity. ",
-    "Anything which has Physical presence or Physical appearance can be considered as an Object . ",
-    " Object has States and Behavior . "
+  ObjectPoint1:["Object is Real world Physical entity with States and Behavior. ",
+  
+    " An object in Java is an instance of a class that contains variables (state) and methods (behavior) that define what the object knows and what it can do. "
   ],
   ObjectSubtopic1: "🟦State",
   
-  ObjectPoint2:[ "States of an Object is nothing but Property , Features , Data or an Information which describes what an Object is.",
-    "State Information / Data  Variable ( Data-Member ). ",
+  ObjectPoint2:[ "State represents the data or attributes of an object.",
+"State is also called as Data Member or Instance Variable.",
+"The state defines the current condition or information about the object.",
     
   ],
   ObjectSubtopic2: "🟩Behaviour",
   ObjectPoint3:[
-    "Behavior of an Object represents Action / Work performed by an Object. ",
-    "Behavior          Action / Work           Method . "
-  ]
 
+    "Behavior of an Object represents Action / Work performed by an Object. ",
+    "It is also called as Method or Function.",
+
+    ],
+
+ ObjectCreation:[
+    "To create an Object we require Class. ",
+    "An Object is created using new keyword followed by Class Name and Parenthesis. ",
+    "Syntax : ClassName objectName = new ClassName();",
+
+  ]
 },
+
+
  {
 id: 4,
 topic: ["🤝Relationships"],
@@ -229,7 +241,7 @@ const Class = () => {
                   ))}
                 </ul>
               )}
-              <h1 className="text-2xl font-bold text-slate-600 mb-8 text-left">{classCard[2].ObjectSubtopic1} </h1>
+              <h1 className="text-2xl font-bold mt-8 text-slate-600 mb-4 text-left">{classCard[2].ObjectSubtopic1} </h1>
                {classCard[2].ObjectPoint2 && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-600 dark:text-gray-300">
                   {classCard[2].ObjectPoint2.map((item, idx) => (
@@ -237,7 +249,8 @@ const Class = () => {
                   ))}
                 </ul>
               )} 
-              <h1 className="text-2xl font-bold text-slate-600 mb-8 text-left">{classCard[2].ObjectSubtopic2} </h1>
+              
+              <h1 className="text-2xl font-bold text-slate-600 mt-8 mb-4 text-left">{classCard[2].ObjectSubtopic2} </h1>
                {classCard[2].ObjectPoint3 && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
                   {classCard[2].ObjectPoint3.map((item, idx) => (
@@ -245,9 +258,19 @@ const Class = () => {
                   ))}
                 </ul>
               )}
-<img src={classCard[0].ClassImg} alt="" />
-              <h1 className="text-2xl font-bold mt-4 text-slate-600 mb-4 text-left">Note </h1>
 
+            <img src={classCard[0].ClassImg} className='mt-8' alt="" />
+             <h1 className="text-2xl font-bold mt-8 text-slate-600 mb-4 text-left">Object Creation </h1>
+               {classCard[2].ObjectCreation && (
+                <ul className="list-disc list-inside mb-4 font-semibold  text-gray-700 dark:text-gray-300">
+                  {classCard[2].ObjectCreation.map((item, idx) => (
+                    <li key={idx}>✔️{item}</li>
+                  ))}
+                </ul>
+              )}
+        <img src={ObjectImg} className='mt-8' alt="" />
+
+              <h1 className="text-2xl font-bold mt-8 text-slate-600 mb-4 text-left">Note </h1>
                {classCard[0].NotePoint1 && (
                 <ul className="list-disc list-inside mb-4 font-semibold  text-gray-700 dark:text-gray-300">
                   {classCard[0].NotePoint1.map((item, idx) => (
@@ -255,6 +278,7 @@ const Class = () => {
                   ))}
                 </ul>
               )}
+             
         </div>
       
     </div> 

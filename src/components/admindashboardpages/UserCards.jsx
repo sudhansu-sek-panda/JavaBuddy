@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from "react";
+import { db } from "../../../db/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const UserCards = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((err) => console.error("Error fetching users:", err));
+    const fetchUsers = async () => {
+      const snapshot = await getDocs(collection(db, "users"));
+      const data = snapshot.docs.map((doc) => doc.data());
+      setUsers(data);
+    };
+    fetchUsers();
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen text-white p-6">
       <h2 className="text-3xl font-bold text-center mb-6">Registered Users</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {users.map((user) => (
           <div
             key={user.id}
-            className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300"
+            className=" rounded-xl shadow-md p-5 hover:shadow-lg transition-all duration-300"
           >
             {/* Profile Image */}
             {user.profileImage ? (

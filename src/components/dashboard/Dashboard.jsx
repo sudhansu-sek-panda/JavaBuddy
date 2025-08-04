@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import {
   ChevronDown,
   ChevronRight,
+  ChevronLeft,
   Code,
   BookOpen,
   Settings,
@@ -12,19 +13,20 @@ import {
   Grid,
   AlertTriangle,
   HelpCircle,
+  Search,
 } from "lucide-react";
 
 import ScrollPage from "../scrollButton/ScrollPage";
 
 const SidebarItem = ({ title, links, icon: Icon, isOpen, onClick }) => {
   return (
-    <div className="group">
+    <div className="group ">
       <div
         onClick={onClick}
         role="button"
         tabIndex={0}
         aria-expanded={isOpen}
-        className="flex items-center justify-between px-4 py-3 font-medium cursor-pointer text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg border border-white/10 backdrop-blur-sm"
+        className="flex items-center justify-between px-4 py-3 font-medium cursor-pointer text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg border border-white/10 backdrop-blur-sm "
       >
         <div className="flex items-center space-x-3">
           {Icon && (
@@ -79,7 +81,9 @@ const SidebarItem = ({ title, links, icon: Icon, isOpen, onClick }) => {
 
 const Dashboard = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const sidebarData = [
     {
@@ -150,12 +154,11 @@ const Dashboard = () => {
       icon: Package,
       links: [
         { label: "Object Class", path: "/dashboard/lang/objectclass" },
-        // {
-        //   label: "Object Class Methods",
-        //   path: "/dashboard/lang/objectmethods",
-        // },
         { label: "String Class", path: "/dashboard/lang/stringclass" },
-        { label: "String Class Methods", path: "/dashboard/lang/stringmethods" },
+        {
+          label: "String Class Methods",
+          path: "/dashboard/lang/stringmethods",
+        },
         { label: "StringBuffer Class", path: "/dashboard/lang/stringbuffer" },
         {
           label: "StringBuffer Class Methods",
@@ -178,7 +181,10 @@ const Dashboard = () => {
       title: "Collection Framework",
       icon: Grid,
       links: [
-        { label: "CollectionFramework", path: "/dashboard/collection/framework" },
+        {
+          label: "CollectionFramework",
+          path: "/dashboard/collection/framework",
+        },
         { label: "List", path: "/dashboard/collection/list" },
         { label: "Set", path: "/dashboard/collection/set" },
         { label: "Queue", path: "/dashboard/collection/queue" },
@@ -195,7 +201,7 @@ const Dashboard = () => {
       links: [{ label: "Exception Handling", path: "/dashboard/exceptions" }],
       icon: AlertTriangle,
     },
-     {
+    {
       title: "Interview Questions",
       links: [{ label: "Interview Questions", path: "/dashboard/interview" }],
       icon: HelpCircle,
@@ -210,42 +216,90 @@ const Dashboard = () => {
   }, [location]);
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      <aside className="w-80 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 p-4 space-y-3 overflow-y-auto scrollbar-hide shadow-2xl relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 backdrop-blur-3xl"></div>
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
+    <div className="flex h-screen  bg-gray-50 relative">
+      {/* Sidebar Toggle Button at side */}
+      <button
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className={`fixed sm:absolute z-50 top-4 sm:top-1/2 sm:-translate-y-1/2 transition-all duration-300 p-2 bg-black rounded-full shadow-md hover:bg-gray-100 hover:text-black ${
+          isSidebarOpen ? "left-72 sm:left-80" : "left-2"
+        }`}
+      >
+        {isSidebarOpen ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
+      </button>
 
-        <div className="relative z-10 text-center mb-8">
-          <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-            <div className="flex items-center justify-center space-x-3 mb-2">
-              <div className="p-2 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg shadow-lg">
-                <Code size={24} className="text-white" />
+      {/* Sidebar */}
+      <aside
+        className={`${
+          isSidebarOpen ? "w-72 sm:w-80" : "w-0"
+        } bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800
+  px-3 sm:px-4 pt-14 space-y-3 overflow-y-auto scrollbar-hide shadow-2xl transition-all duration-300 relative`}
+      >
+        {isSidebarOpen && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 backdrop-blur-3xl"></div>
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/5 to-transparent"></div>
+
+            <div className="relative z-10 text-center mb-8">
+              <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-1 border border-white/20">
+                <div className="flex items-center justify-center space-x-3">
+                  {/* <div className="p-2 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg shadow-lg">
+                    <Search size={24} className="text-black " />
+                  </div> */}
+                  <input
+                    type="search"
+                    placeholder="Search by topic name.."
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full sm:w-64 md:w-72 text-aqua h-9 rounded-lg px-4 py-2 outline-none border border-gray-300 bg-transparent
+    hover:shadow-md hover:shadow-orange-500 focus:shadow-md transition-all duration-300 
+    animate-glow border-none"
+                  />
+                </div>
               </div>
-              <h1 className="text-2xl font-bold text-white">Java Buddy</h1>
             </div>
-          </div>
-        </div>
 
-        <div className="relative z-10 space-y-2">
-          {sidebarData.map((item, index) => (
-            <SidebarItem
-              key={index}
-              title={item.title}
-              links={item.links}
-              icon={item.icon}
-              isOpen={openIndex === index}
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            />
-          ))}
-        </div>
+            <div className="relative z-10 space-y-2">
+              {sidebarData
+                .filter((item) => {
+                  const q = searchQuery.toLowerCase();
+                  return (
+                    item.title.toLowerCase().includes(q) ||
+                    item.links.some((link) =>
+                      link.label.toLowerCase().includes(q)
+                    )
+                  );
+                })
+                .map((item, index) => (
+                  <SidebarItem
+                    key={index}
+                    title={item.title}
+                    icon={item.icon}
+                    isOpen={openIndex === index}
+                    onClick={() =>
+                      setOpenIndex(openIndex === index ? null : index)
+                    }
+                    links={item.links.filter((link) =>
+                      link.label
+                        .toLowerCase()
+                        .includes(searchQuery.toLowerCase())
+                    )}
+                  />
+                ))}
+            </div>
 
-        <div className="relative z-10 mt-8 pt-4 border-t border-white/10 text-center">
-          <p className="text-white/50 text-xs">Learn • Practice • Master</p>
-        </div>
+            <div className="relative z-10 mt-8 pt-4 border-t border-white/10 text-center">
+              <p className="text-white/50 text-xs">Learn • Practice • Master</p>
+            </div>
+          </>
+        )}
       </aside>
 
-      <main className="flex-1 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 p-8 overflow-y-auto scrollbar-hide">
-        <div className="max-w-6xl mx-auto">
+      {/* Main Content */}
+      <main
+        id="main-scroll"
+        className="flex-1 bg-gradient-to-br from-zinc-900 via-neutral-900 to-gray-800
+ p-8 overflow-y-auto scrollbar-hide transition-all duration-300"
+      >
+        <div className="max-w-6xl mx-auto pt-10 ">
           <Outlet />
         </div>
         <ScrollPage />

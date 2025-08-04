@@ -8,6 +8,7 @@ import {
   Target,
 } from "lucide-react";
 import img from "../../../assets/Exception/img1.jpg";
+import ScrollPage from "../../scrollButton/ScrollPage";
 
 const ICONS = {
   exception: (
@@ -481,6 +482,7 @@ const Exception = () => {
           <ContentCard key={section.id} section={section} />
         ))}
       </div>
+      
     </div>
   );
 };
