@@ -1,5 +1,5 @@
 import React from "react";
-import ClassImg from '../../../assets/images/class/classObject.webp'
+import ClassImg from '../../../assets/images/class/classObject.png'
 import ComponentClass from '../../../assets/images/class/classPlane.png'
 import KeyImg from '../../../assets/images/class/ReservedWords.png'
 import ObjectImg from '../../../assets/images/objects/Object.png'

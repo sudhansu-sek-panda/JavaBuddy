@@ -138,7 +138,7 @@ example: [
 "} ",
 ],
 
-exampleInterface: [
+example: [
 "An Interface cannot inherit class , not even Object class. ",
 " ",
 "Once interface can inherit any number of interfaces. Using keyword extends. ",

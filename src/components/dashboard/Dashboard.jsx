@@ -132,7 +132,7 @@ const Dashboard = () => {
       links: [
         { label: "Class", path: "/dashboard/oops/class" },
         { label: "Methods", path: "/dashboard/oops/methods" },
-        { label: "Features of Method", path: "/dashboard/oops/features" },
+        // { label: "Features of Method", path: "/dashboard/oops/features" },
         { label: "Inheritance", path: "/dashboard/oops/inheritance" },
         { label: "Method Overloading", path: "/dashboard/oops/overloading" },
         { label: "Method Overriding", path: "/dashboard/oops/overriding" },

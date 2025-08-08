@@ -1,8 +1,10 @@
 import React from 'react'
 import MethodImg from '../../../assets/images/method/Method.jpg'
+import MethodArgument from '../../../assets/images/method/MethodArgument.png'
+import MethodReturnType from '../../../assets/images/method/MethodReturnType.png'
 const cardMethods = [
   {id:1,
-    MethodTopic:"Methods in Java  ",
+    MethodTopic:"Methods  ",
     MethodDefinition:["A method is a block of code that performs a specific task."," It is used to define behaviour in a class and can be called multiple times to reuse the functionality, making programs more efficient and organized. "],
   
   point:" ☑️ Methods are time savers and help us to reuse the code without retyping the code. ",
@@ -113,6 +115,18 @@ example:[
     "}",
     "abstract void meth();"
   ]
+},
+{
+  id:5,
+  NonStaticMethod: [
+" Non-Static Methods also known as Instance Methods ",
+"	These methods belong to objects, meaning you need to create an object to call them.",
+"They can access instance variables and other non-static methods and static methods"
+  ],
+  StaticMethods:[
+    "	These belong to the class itself",
+    "They can be called directly, with object name, or using the class name"
+  ]
 }
 
 ]
@@ -126,7 +140,7 @@ const Methods = () => {
         <div className="flex flex-col gap-8">
         
             <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
-              <h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3">{cardMethods[0].MethodTopic}</h2>
+              <h1 className="text-2xl font-semibold text-purple-700 text-center dark:text-white mb-3">{cardMethods[0].MethodTopic}</h1>
               {/* {card.Defination && <p className="text-gray-800 dark:text-gray-300 mb-4 font-semibold">{card.Defination}</p>} */}
              {cardMethods[0].MethodDefinition && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
@@ -135,7 +149,7 @@ const Methods = () => {
                   ))}
                 </ul>
               )} 
-                            <h2 className="mt-6 text-2xl font-semibold text-purple-700 dark:text-white mb-3">Method Syntax</h2>
+                            <h2 className="text-2xl font-semibold mt-6 text-purple-700 dark:text-white mb-3"> Syntax</h2>
 
               {cardMethods[0].methodSyntax && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
@@ -147,17 +161,19 @@ const Methods = () => {
               
 
 
-              <img className="mt-4" src={cardMethods[0].MethodImg} alt="" />
+              <img className="mt-6" src={cardMethods[0].MethodImg} alt="" />
 
               {/* Method Argument */}
-                                                                      <h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3">Method Argument</h2>
-                                                                       {cardMethods[1].ArgumentsInMethods && (
+               <h2 className="text-2xl mt-6 font-semibold text-purple-700 dark:text-white mb-3">Method Argument </h2>
+                {cardMethods[1].ArgumentsInMethods && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
                   {cardMethods[1].ArgumentsInMethods.map((item, idx) => (
                     <li key={idx}>✔️{item}</li>
                   ))}
                 </ul>
               )}
+                           <img className="mt-4" src={MethodArgument} alt="" />
+
                 {cardMethods[1].NoArgumentMethod && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
                   {cardMethods[1].NoArgumentMethod.map((item, idx) => (
@@ -174,11 +190,11 @@ const Methods = () => {
                 </ul>
               )}
 
-                                          <h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3">Rules for Method Argument</h2>
+                                          <h2 className="text-2xl mt-6 font-semibold text-purple-700 dark:text-white mb-3">Rules for Method Argument</h2>
 
 
               {/* Method Return Type */}
-                                                  <h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3"> Method Return Type</h2>
+                                                  <h2 className="text-2xl mt-6 font-semibold text-purple-700 dark:text-white mb-3"> Method Return Type</h2>
 {cardMethods[2].returntype && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
                   {cardMethods[2].returntype.map((item, idx) => (
@@ -186,6 +202,7 @@ const Methods = () => {
                   ))}
                 </ul>
               )}
+              <img src={MethodReturnType} alt="" className='mt-6'/>
 {cardMethods[2].noReturnType && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
                   {cardMethods[2].noReturnType.map((item, idx) => (
@@ -209,7 +226,7 @@ const Methods = () => {
               )}
 
               {/* Rules for method Return Type */}
-                                          <h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3">Rules for Method Return Type</h2>
+<h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3">Rules for Method Return Type</h2>
 
               {cardMethods[0].MethodRules && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
@@ -218,7 +235,24 @@ const Methods = () => {
                   ))}
                 </ul>
               )}
-              
+               <h2 className="text-2xl font-semibold mt-6 text-purple-700 dark:text-white mb-3">Types of Methods</h2>
+
+ <h2 className="text-2xl font-semibold text-purple-700 mt-6 dark:text-white mb-3">Non-Static Method</h2>
+ {cardMethods[4].NonStaticMethod && (
+                <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
+                  {cardMethods[4].NonStaticMethod.map((item, idx) => (
+                    <li key={idx}>✔️{item}</li>
+                  ))}
+                </ul>
+              )}
+ <h2 className="text-2xl font-semibold text-purple-700 mt-6 dark:text-white mb-3">Static Method</h2>
+ {cardMethods[4].StaticMethods && (
+                <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
+                  {cardMethods[4].StaticMethods.map((item, idx) => (
+                    <li key={idx}>✔️{item}</li>
+                  ))}
+                </ul>
+              )}
               {/* {cardMethods[0].MethodExample && (
                 <div className="bg-slate-100 text-slate-600 font-mono p-4 rounded-md overflow-x-auto text-x">
                   {cardMethods[0].MethodExample.map((line, idx) => (

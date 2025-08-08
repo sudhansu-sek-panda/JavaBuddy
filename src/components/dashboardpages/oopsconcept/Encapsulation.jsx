@@ -82,7 +82,7 @@ const Encapsulation = () => {
               {/* <h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3">{card.topic}</h2> */}
               {card.definition && <p className="text-gray-800 dark:text-gray-300 mb-4 font-semibold">{card.definition}</p>}
               {/* {card.definition && <p className="text-gray-800 dark:text-gray-300 mb-4 font-semibold">{card.definition}</p>} */}
-              <h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3">✅Advantages</h2>
+              <h2 className="text-2xl  mt-6 font-semibold text-purple-700 dark:text-white mb-3">✅Advantages</h2>
               {card.advantages && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
                   {card.advantages.map((item, idx) => (
@@ -90,7 +90,7 @@ const Encapsulation = () => {
                   ))}
                 </ul>
               )}
-                            <h2 className="text-2xl font-semibold text-purple-700 dark:text-white mb-3">📋Specifications</h2>
+                            <h2 className="text-2xl mt-6 font-semibold text-purple-700 dark:text-white mb-3">📋Specifications</h2>
 
               {card.specifications && (
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-700 dark:text-gray-300">
@@ -101,25 +101,25 @@ const Encapsulation = () => {
               )}
               
               {card.example && (
-                <div className="bg-gray-900 text-green-200 font-mono p-4 rounded-md overflow-x-auto text-sm">
+                <div className="bg-slate-100 text-slate-600  font-mono mt-6 p-4 rounded-md overflow-x-auto text-x">
                   {card.example.map((line, idx) => (
                     <pre key={idx}>{line}</pre>
                   ))}
                 </div>
               )}
-                            <h2 className="text-2xl font-semibold text-slate-700 dark:text-white mb-3">✅{card.SecondExample}</h2>
+                            <h2 className="text-2xl mt-6 font-semibold text-slate-700 dark:text-white mb-3">✅{card.SecondExample}</h2>
 
               {card.exampleTwo && (
-                <div className="bg-gray-900 text-green-200 font-mono p-4 rounded-md overflow-x-auto text-sm">
+                <div className="bg-slate-100 text-slate-600 font-mono mt-6 p-4 rounded-md overflow-x-auto text-x">
                   {card.exampleTwo.map((line, idx) => (
                     <pre key={idx}>{line}</pre>
                   ))}
                 </div>
               )}
-                            <h2 className="text-2xl font-semibold text-slate-700 dark:text-white mb-3">✅{card.thirdExample}</h2>
+                            <h2 mt-6 className="text-2xl font-semibold text-slate-700 dark:text-white mb-3">✅{card.thirdExample}</h2>
 
               {card.exampleThree && (
-                <div className="bg-gray-900 text-green-200 font-mono p-4 rounded-md overflow-x-auto text-sm">
+                <div className="bg-slate-100 text-slate-600 font-mono mt-6 p-4 rounded-md overflow-x-auto text-x">
                   {card.exampleThree.map((line, idx) => (
                     <pre key={idx}>{line}</pre>
                   ))}

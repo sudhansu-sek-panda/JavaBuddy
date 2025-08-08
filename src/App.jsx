@@ -28,7 +28,7 @@ import Operators from "./components/dashboardpages/operators/Operators";
 import FlowControl from "./components/dashboardpages/flowcontrol/FlowControl";
 import Class from "./components/dashboardpages/oopsconcept/Class";
 import Methods from "./components/dashboardpages/oopsconcept/Methods";
-import Featuresofmethod from "./components/dashboardpages/oopsconcept/Featuresofmethod";
+// import Featuresofmethod from "./components/dashboardpages/oopsconcept/Featuresofmethod";
 import Inheritance from "./components/dashboardpages/oopsconcept/Inheritance";
 import MethodOverloading from "./components/dashboardpages/oopsconcept/MethodOverloading";
 import MethodOverriding from "./components/dashboardpages/oopsconcept/MethodOverriding";
@@ -158,10 +158,10 @@ const App = () => {
               path: "oops/methods",
               element: <Methods />,
             },
-            {
-              path: "oops/features",
-              element: <Featuresofmethod />,
-            },
+            // {
+            //   path: "oops/features",
+            //   element: <Featuresofmethod />,
+            // },
             {
               path: "oops/inheritance",
               element: <Inheritance />,
@@ -172,7 +172,7 @@ const App = () => {
             },
             {
               path: "oops/overriding",
-              element: <MethodOverriding />,
+              element: <MethodOverriding  />,
             },
             {
               path: "oops/modifiers",
