@@ -118,7 +118,7 @@ const App = () => {
           ),
           children: [
             {
-              path: "/dashboard/introduction",
+              path: "/dashboard",
               element: <Introduction />,
             },
             {

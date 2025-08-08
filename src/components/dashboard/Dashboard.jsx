@@ -88,7 +88,7 @@ const Dashboard = () => {
   const sidebarData = [
     {
       title: "Introduction",
-      links: [{ label: "Introduction", path: "/dashboard/introduction" }],
+      links: [{ label: "Introduction", path: "/dashboard" }],
       icon: BookOpen,
     },
     {
