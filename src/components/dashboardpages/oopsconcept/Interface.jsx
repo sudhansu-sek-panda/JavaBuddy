@@ -104,6 +104,7 @@ InterfaceExample: [
 ],
 points: [
 "The class can inherit or implements multiple interfaces which is called as Multiple inheritance. "],
+
 MultipleInheriExample:[
 "public class FanImpl implements Iswitch,RegularInf { ",
 " public void IncreaseSpeed() { ",
@@ -138,7 +139,7 @@ example: [
 "} ",
 ],
 
-example: [
+exampleTwo: [
 "An Interface cannot inherit class , not even Object class. ",
 " ",
 "Once interface can inherit any number of interfaces. Using keyword extends. ",
@@ -149,6 +150,8 @@ example: [
 "  ",
 "}" ,
 ],
+
+
  },
 
 {

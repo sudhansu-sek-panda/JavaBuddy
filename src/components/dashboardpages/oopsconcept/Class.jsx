@@ -1,151 +1,9 @@
 import React from "react";
-import ClassImg from '../../../assets/images/class/classObject.png'
-import ComponentClass from '../../../assets/images/class/classPlane.png'
-import KeyImg from '../../../assets/images/class/ReservedWords.png'
 import ObjectImg from '../../../assets/images/objects/Object.png'
-const classCard = [
-  {
-id:1, 
-topicClass: ["🧠Class"],
-classDefinition:[ "A class is a blueprint for creating objects. It defines properties and behaviours that its objects will have. Classes are fundamental to Java's Object-Oriented Programming paradigm."],
-NotePoint1: [
-  "We cannot create an Object without a Class. Hence to create n number of objects we require class.  ",
-  "Multiple Objects created using same class is called as Similar Object or Identical Object. ",
-  "Every Object work independently i.e.., if one Object is modified or destroyed then it does not affect another Object. "
-],
-ClassImg:ClassImg,
-ClassSubtopic1:"Components of a Class",
-ClassSubimg:ComponentClass,
-classComponents:[
+import diagramKeyword from '../../../assets/images/class/diagramKeywordsGradient.png'
 
-"•	 Fields ",
-"•	Methods ",
-"•	 Constructors ",
-"   Blocks ",
-"•	NestedClass ",
-"•	main() Method (Optional) ",
+import { classCard } from "./oops";
 
-],
-classExample:[
-
-"class ClassName {  ", 
-" ",
-"   // Fields (Variables)",
-"   int value;",
-" ",
-"   // Constructor ",
-"   ClassName(int v) {",
-"    value = v;",
-"   }",
-" ",
-
-"   // Methods ",
-"   void display() {",
-"     System.out.println('Value: ' + value);",
-"   }",
-" ",
-"   // Nested Class ",
-"   static class NestedClass {",
-"     void show() {",
-"         System.out.println('Inside Static Nested Class');",
-"        }",
-"     }",
-" ",
-"   // Main method (optional)",
-"    public static void main(String[] args) {",
-"      ClassName obj = new ClassName(10);",
-"      obj.display();",
-"      ClassName.NestedClass ob = new ClassName.NestedClass();",
-"      ob.show();",
-"     }",
-" ",
-"}",
-]
-// expimg:ClassExample
-  },
-{
-  id:2,
-  keywordTopic:[" 📦Keywords or Reserved Words : "],
-   keywordPoint1: ["✅  In Java, a keyword is a reserved word that has a predefined meaning in the language and cannot be used as a variable name, class name, method name, or identifier."," ✅  These words are part of the syntax and are used to perform specific operations."],
-  keywordImg:KeyImg,
-}
-,
-{
-  id:3, 
-  ObjectTopic:[ "👯Object"],
-  ObjectPoint1:["Object is Real world Physical entity with States and Behavior. ",
-  
-    " An object in Java is an instance of a class that contains variables (state) and methods (behavior) that define what the object knows and what it can do. "
-  ],
-  ObjectSubtopic1: "🟦State",
-  
-  ObjectPoint2:[ "State represents the data or attributes of an object.",
-"State is also called as Data Member or Instance Variable.",
-"The state defines the current condition or information about the object.",
-    
-  ],
-  ObjectSubtopic2: "🟩Behaviour",
-  ObjectPoint3:[
-
-    "Behavior of an Object represents Action / Work performed by an Object. ",
-    "It is also called as Method or Function.",
-
-    ],
-
- ObjectCreation:[
-    "To create an Object we require Class. ",
-    "An Object is created using new keyword followed by Class Name and Parenthesis. ",
-    "Syntax : ClassName objectName = new ClassName();",
-
-  ]
-},
-
-
- {
-id: 4,
-topic: ["🤝Relationships"],
-subtopic1:"🔗Association",
-  subdefinition: [
-    "Association is one of the concept of Object Orientation which is also called as Has – A Relationship . ", "It is a process of one or multiple Objects getting associated with another Object."
-  ],
-  types:[
-    "Composition",
-    "🪢Aggregation"
-  ]
- 
- },
- {id: 5,
-  topic:["Composition"]
- },
-
- {
-id:6,
-topicClassLoading:["🔄Class Loading"],
-classLoadingDefinition: "Class Loading is the process of loading the .class file (Byte Code) from Hard disk memory to JVM Memory ",
-ClassLoadingPoint1: ["A class gets loaded only once.", "JVM uses Class Loader to load .class file ."],
-classLoadingExample:[ "class Project{ ",
-"void display() { ",
-"System.out.println('Project display')", 
-"}",
-"public static void main(String[] args){",
-"System.out.println('Main Starts');", 
-"Project p = new Project();",
-"p.dispaly();",
-"System.out.println('Main ends');",
-],
-steps:[
-  "Compilation",
-  "Class Loading",
-  "Execution"
-]
-
-
-
- }
-
-
-
-]
 
 
 
@@ -214,8 +72,13 @@ const Class = () => {
                   ))}
                 </ul>
               )}
-              <img src={classCard[1].keywordImg} alt="" />
+
+             <div className="flex flex-col items-center justify-center">
+               <img src={diagramKeyword} className="mt-8 h-[200px]" alt="" />
+              <img src= {classCard[1].keywordImg} className="  mt-12 text-center " alt="" />
+              </div>
                 {/* {classCard[0].types && (
+             </div>
                 <ul className="list-disc list-inside mb-4 font-semibold text-gray-600 dark:text-gray-300">
                   {classCard[0].types.map((item, idx) => (
                     <li key={idx}>✔️{item}</li>
@@ -259,7 +122,7 @@ const Class = () => {
                 </ul>
               )}
 
-            <img src={classCard[0].ClassImg} className='mt-8' alt="" />
+            <img src={classCard[0].ClassImg} className='mt-8 w-[100%]' alt="" />
              <h1 className="text-2xl font-bold mt-8 text-slate-600 mb-4 text-left">Object Creation </h1>
                {classCard[2].ObjectCreation && (
                 <ul className="list-disc list-inside mb-4 font-semibold  text-gray-700 dark:text-gray-300">

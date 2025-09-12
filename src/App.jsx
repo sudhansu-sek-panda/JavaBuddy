@@ -112,13 +112,13 @@ const App = () => {
         {
           path: "/dashboard",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Dashboard />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
           children: [
             {
-              path: "/dashboard/introduction",
+              path: "/dashboard",
               element: <Introduction />,
             },
             {

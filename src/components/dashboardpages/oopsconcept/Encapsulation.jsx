@@ -1,77 +1,7 @@
 import React from 'react'
-
+      import { EncapsulationCard } from './oops';
 const Encapsulation = () => {
-  const EncapsulationCard = [
-    {
-      id: 1,
-      topic: "Encapsulation",
-      definition: "It is the process of binding or wrapping up of data members along with its’s data handler methods i.e.., getters & setters ",
-      advantages: [
-        "We can protect the data from unauthorized access.",
-        "We can perform data validation.",
-        "We can make the data readonly of writeonly.",
-        
-      ],
-      specifications: [
-        "The bean class must be public non abstract class.",
-        "We can perform data validation. ",
-        "We can make the data readonly or writeonly."
-      ],
-      example: [
-        "public class Student{",
-        "     private int age;",
-        "     private double perc; ",
-        "     public int getAge() { ",
-        "     return age; ",
-        "     }",
-        "     public void setAge(int age) { ",
-        "     this.age = age; ",
-        "     }",
-        "     public double getPerc() { ",
-        "     return perc;",
-        "     }",
-        "     public void setPerc(double perc) { ",
-        "     this.perc = perc;",
-        "     }",
-        "     public void study()// business behavior",
-        "     { ",
-        "      ",
-         "    }",
-         "    public void doHomeWork() // business behavior ",
-         "}}",
-         "  ",
-         "public class Test{ ",
-         "    public static void main(String[] args) {",
-         "        Student s=new Student(); ",
-         "        s.setAge(40);",
-         "        System.out.println(s.getAge());",
-         "        s.setPerc(66.8);",
-         "        System.out.println(s.getPerc());",
-         "     }",
-         "}"
-      ],
-      SecondExample:        "To make Data write only:",
-      exampleTwo:[
-        "class User{ ",
-        "     public void setName(String name) { ",
-        "     this.name=name;",
-        "         }",
-        "}"
-      ],
-      thirdExample: "To make Data Read only:",
-      exampleThree: [
-        "public class Mobile{ ",
-        "     private final String make='India';",
-        "     public void getMake() { ",
-        "           return make; ",
-        "      }",
-        "}"
-      ]
-      
-    },
-
-
-  ]
+ 
  return (
     <div className="p-6">
       <h1 className="text-3xl font-bold text-purple-700 mb-8">💊Encapsulation</h1>
