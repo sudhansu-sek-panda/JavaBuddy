@@ -18,21 +18,24 @@ export const introCards = [
     
   // }
   {
-    id:2,
-    icon: "",
-    title: "History and Evolution Of Java",
-    // image: Evolution,
-    points: [
-      "Java was conceived by James Gosling at Sun Microsystems in 1991, originally named Oak. It was developed as a programming language for intelligent appliances. In 1995, they renamed the language Java and released it to the public. Its core philosophy was a simple yet revolutionary idea: Write Once, Run Anywhere (WORA).",
-      "How did Java Achieved WORA ?",
-      "Java's magic lies in its virtual machine. Instead of compiling code directly into machine language for a specific operating system, Java code is compiled into an intermediate form called bytecode. This bytecode isn't tied to any particular machine.When you run a Java program, the Java Virtual Machine (JVM), a software layer that sits on top of your operating system, translates the bytecode into the machine code that your computer can understand. This means the same bytecode can run on any device with a JVM installed, whether it's a computer, a phone, or even a smart TV.",
-      "Simple Flow : Your Java Code (.java) -> Java Compiler -> Java ByteCode (.class) -> JVM -> Your Computer's CPU"
-
-    ]
-  },
+  id: 2,
+  icon: "History",
+  title: "History and Evolution of Java",
+  description: "The journey of Java from Oak to a universal language.",
+  points: [
+    "☕ 1991 – Conceived by James Gosling at Sun Microsystems, originally named **Oak**.",
+    "📅 1995 – Renamed to **Java** and released publicly.",
+    "🌍 Core Idea → **Write Once, Run Anywhere (WORA)**.",
+    "⚡ How did Java achieve WORA?",
+    "🔹 Java code is compiled into Bytecode (not machine-specific).",
+    "🔹 JVM (Java Virtual Machine) translates Bytecode into Machine Code.",
+    "🔹 Same Bytecode runs on any device with a JVM (PC, Phone, Smart TV).",
+    "➡️ Flow: Your Java Code (.java) → Compiler → Bytecode (.class) → JVM` → CPU Execution"
+  ]
+},
   {
     id:3,
-    icon: "",
+    icon: "Why",
     title: "Why Choose Java ?",
     points: [
       "1.Easy to Learn – Java looks like English and is beginner-friendly.",
@@ -47,12 +50,11 @@ export const introCards = [
   },
   {
     id:4,
-    icon: "",
+    icon: "HowWorks",
     title: "How Java Works 🤷?",
     points: [
         "1.You write code → in a .java file (example: Hello.java).",
-        "2.Compiler (javac) → Converts your code into Bytecode (a .class file).",
-          "This bytecode is not machine-specific.",
+        "2.Compiler (javac) → Converts your code into Bytecode (a .class file). This bytecode is not machine-specific.",
         "3.JVM (Java Virtual Machine) → Reads the bytecode.",
           "JVM acts like a translator between Java and your computer.",
         "4.Interpreter + JIT Compiler → JVM converts bytecode into machine code (0s and 1s) that your computer understands.",
@@ -74,24 +76,29 @@ export const introCards = [
   },
   {
     id:6,
-    icon: "",
+    icon: "Framework",
     title: "Framework vs dependency vs package vs file",
     points: [
-      "1. File",
-      "Smallest unit.",
-      "It’s just a single document (like .java or .class).",  
-      "Example: Hello.java",
-      "2. Package",
-      "A collection of related files (classes, interfaces).",
-      "Keeps code organized.",
-      "Example: java.util package has classes like ArrayList, HashMap.",
-      "3. Dependency",
-      "Extra code/library that your project needs but is written by someone else.",
-      "Example: If you need JSON parsing, you add the json dependency.",
-      "4. Framework",
-      "A big ready-made structure of code that you build your project on.",
-      "Provides rules, tools, and libraries.",
-      "Example: Spring Boot, Hibernate."
+      {
+        feature: "File",
+        Description: "Smallest unit. It’s just a single document (like .java or .class).",
+        Example: "Hello.java",
+      },
+      {
+        feature: "Package",
+        Description: "A collection of related files (classes, interfaces). Keeps code organized.",
+        Example: "java.util package (ArrayList, HashMap)",
+      },
+      {
+        feature: "Dependency",
+        Description: "Extra code/library your project needs but is written by someone else.",
+        Example: "JSON parsing library",
+      },
+      {
+        feature: "Framework",
+        Description: "A big ready-made structure of code that you build your project on. Provides rules, tools, and libraries.",
+        Example: "Spring Boot, Hibernate",
+      }
     ]
   },
   {
@@ -116,10 +123,15 @@ export const introCards = [
   },
   {
     id:8,
-    icon: "",
+    icon: "Advantages",
     title: "Advantages of Java",
     points: [
-
+        "Simple → Easy to learn and understand.",
+        "Portable → Runs on any operating system.",
+        "Secure → Provides safe and reliable code execution.",
+        "Object-Oriented → Helps in reusability and better structure.",
+        "Robust → Handles errors and memory well.",
+        "Multithreaded → Can perform many tasks at the same time."
     ]
   }, {
     id: 9,
@@ -141,10 +153,16 @@ export const introCards = [
   },
   {
     id:10,
-    icon: "",
+    icon: "Comparison",
     title: "Java vs C vs JavaScript",
     points: [
-
+      { feature: "Type", C: "Procedural", Java: "Object-Oriented", JavaScript: "Scripting (Web)" },
+      { feature: "Platform", C: "Platform Dependent", Java: "Platform Independent (JVM)", JavaScript: "Runs in Browsers & Node.js" },
+      { feature: "Use Cases", C: "System Programming (OS, Drivers)", Java: "Enterprise Apps, Android", JavaScript: "Web Frontend & Backend" },
+      { feature: "Speed", C: "Very Fast (close to hardware)", Java: "Slower (JVM Overhead)", JavaScript: "Depends on Browser Engine" },
+      { feature: "Memory Management", C: "Manual (Pointers)", Java: "Automatic (GC)", JavaScript: "Automatic (GC)" },
+      { feature: "Syntax", C: "Low-level, Complex", Java: "High-level, Similar to C++", JavaScript: "High-level, Dynamic" },
+      { feature: "Execution", C: "Compiled (Machine Code)", Java: "Compiled to Bytecode (JVM)", JavaScript: "Interpreted in Browser" }
     ]
   }
    
